@@ -1,0 +1,34 @@
+##########################################
+## Create Directory If It Does Not Exist.
+## Required variables:
+## - landing_zone
+##########################################
+
+---
+- name: Check Landing Zone Exist
+  stat:
+    path: "{{c_drive}}REGRESSN"
+  register: lz
+
+- name: Cleanning the landing zone
+  shell: "rm -r {{c_drive}}REGRESSN"
+  when: lz.stat.exists
+
+- name: Check triggerfiles
+  stat:
+    path: "{{c_drive}}TRIGGER"
+  register: lp
+
+- name: Cleanning triggerfile
+  shell: "rm {{c_drive}}TRIGGER"
+  when: lp.stat.exists
+
+- name: Check trigger2
+  stat:
+    path: "{{c_drive}}TRIGGER2"
+  register: lc
+
+- name: Cleanning triggerfiles
+  shell: "rm {{c_drive}}TRIGGER2"
+  when: lc.stat.exists
+

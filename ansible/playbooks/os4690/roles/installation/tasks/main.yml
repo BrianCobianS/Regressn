@@ -1,0 +1,5 @@
+
+- name: Checking for regressn directory
+  include_role:
+    name: installation
+    tasks_from: Restore_Node.yml
